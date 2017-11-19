@@ -1,0 +1,19 @@
+astpar:/# sudo su - postgres
+
+postgres@astpar:~$ psql -d asterisk
+
+asterisk=# UPDATE parametro set valor = MD5('astpar') where id = 2;
+UPDATE 1
+asterisk=#
+
+asterisk-# \q
+postgres@astpar:~$ exit
+logout
+astpar:/#
+
+Entre pelo browser http://ip_do_astpar/
+
+User: admin
+Pass: pbx4ip
+
+
