@@ -3,7 +3,7 @@ Projeto AstPAR PBX IP
 
 A CELEPAR, empresa de tecnologia do Estado do Paraná, desenvolveu o Asterisco Paraná, o mesmo ficou na versão 2.0. O projeto foi descontinuado em 14 de julho de 2008.
 
-Governo do Paraná, inovou, quando A CELEPAR - Companhia de Informaica do Paraná entregou a comunidade de Software Livre do Brasil a versão 2.0 da plataforma Asterisco Paraná (telefonia VoIP), em Software Livre. Hoje o único site com referencia ao projeto é a url abaixo: 
+Governo do Paraná, inovou, quando A CELEPAR - Companhia de Informática do Paraná entregou a comunidade de Software Livre do Brasil a versão 2.0 da plataforma Asterisco Paraná (telefonia VoIP), em Software Livre. Hoje o único site com referencia ao projeto é a url abaixo: 
 
 https://sourceforge.net/projects/asteriscoparana/
 
