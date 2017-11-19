@@ -10,7 +10,7 @@ postgres@astpar:~$ exit
 
 astpar:/#
 
-Entre pelo browser http://ip_do_astpar/
+Entre pelo browser http://ip_do_astpar/telefoniaip
 
 User: admin
 Pass: astpar
