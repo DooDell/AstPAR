@@ -1,0 +1,19 @@
+#! /bin/sh
+set -e
+
+if [ "$1" = "remove" ]; then
+	ARQ="asterisk-"`date +"%d-%m-%y_%H-%M-%S"`".sql"
+	echo "Removendo a base de dados [ asterisk ]."
+	echo "Backup salvo em ......... [ /TELIP_BAK/$ARQ ]."
+	
+	su --command="pg_dump asterisk > /tmp/$ARQ" postgres > /dev/null
+	mkdir -p /TELIP_BAK/
+	mv /tmp/$ARQ /TELIP_BAK/
+	
+	sleep 2
+	
+	su --command="dropdb asterisk" postgres > /dev/null || true
+	su --command="dropuser sa_asterisk" postgres > /dev/null || true
+fi
+
+exit 0

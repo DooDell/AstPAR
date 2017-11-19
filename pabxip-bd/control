@@ -1,0 +1,10 @@
+Package: pabxip-bd
+Priority: extra
+Section: pbx
+Installed-Size: 5868	.
+Maintainer: Gabriel Ortiz Lour <ortiz@celepar.pr.gov.br>
+Architecture: i386
+Version: 1.2
+Depends: postgresql-8.1
+Description: PABX IP - Modelos de banco de dados
+ - DB asterisk

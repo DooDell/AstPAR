@@ -1,0 +1,58 @@
+#! /bin/sh
+set -e
+
+test -f /etc/default/telip && . /etc/default/telip
+
+case "$1" in
+    configure)
+		# Importar/Ajustar a Base de Dados o PostgreSQL
+		TEM_BD=`su --command="psql -l" postgres | grep " asterisk " || true`
+		if [ -n "$TEM_BD" ]; then
+			ARQ="asterisk-"`date +"%d-%m-%y_%H-%M-%S"`".sql"
+			su --command="pg_dump asterisk > /tmp/$ARQ" postgres > /dev/null
+			mkdir -p /TELIP_BAK/
+			mv /tmp/$ARQ /TELIP_BAK/
+			echo "Backup da base salvo em ......... [ /TELIP_BAK/$ARQ ]."
+			
+			echo "Verificando compatibilidade da estrutura da Base de dados"
+			php /usr/lib/telefoniaip/arquivos/scripts/deploy/bdASTDiff.php EXECSQL
+#		else
+#			echo "Criando base de dados do sistema - versao $VERSAO"
+#			su --command="psql -c \"CREATE USER sa_asterisk WITH PASSWORD 'sapo'\"" postgres > /dev/null || true
+#			su --command="createdb -O sa_asterisk --encoding=ISO-8859-1 asterisk" postgres > /dev/null || true
+#			cp /usr/lib/telefoniaip/arquivos/sql/asteriskBase.sql /tmp
+#			chmod 0777 /tmp/asteriskBase.sql
+#			su --command="psql asterisk < /tmp/asteriskBase.sql" postgres &> /dev/null
+#			
+#			# Importar a Base de Dados o PostgreSQL de Tarifação
+#			echo "Criando base de dados de localidades"
+#			cp /usr/lib/telefoniaip/arquivos/sql/tarifacao.sql /tmp
+#			chmod 0777 /tmp/tarifacao.sql
+#			su --command="psql asterisk < /tmp/tarifacao.sql" postgres &> /dev/null		
+		fi
+		
+		#Configurar o PostgreSQL
+		PG_OK=`grep 'host all all 0.0.0.0/0 password' /etc/postgresql/8.1/main/pg_hba.conf || true`
+		if [ -z "$PG_OK" ]; then
+			echo "host all all 0.0.0.0/0 password" >> /etc/postgresql/8.1/main/pg_hba.conf
+		fi
+		sed -e "/listen_addresses =/c\listen_addresses = '*'" /etc/postgresql/8.1/main/postgresql.conf > /etc/postgresql/8.1/main/postgresql.conf.new
+		cp -f /etc/postgresql/8.1/main/postgresql.conf.new /etc/postgresql/8.1/main/postgresql.conf
+		rm -f /etc/postgresql/8.1/main/postgresql.conf.new
+		if [ -x /etc/init.d/postgresql-8.1 ]; then
+			/etc/init.d/postgresql-8.1 restart > /dev/null 2> /dev/null
+		fi
+    ;;
+    
+    abort-upgrade|abort-remove|abort-deconfigure)
+        echo "postinst sem acao para o argumento: \`$1'" >&2
+        exit 1
+    ;;
+
+    *)
+        echo "postinst chamado sem argumentos conhecidos: \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+exit 0
