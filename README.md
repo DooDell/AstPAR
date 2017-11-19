@@ -1,5 +1,5 @@
 # AstPAR
-Projeto AstPAR PBX IP
+Softswitch PBX Ip AstPAR baseado em Digium™ Asterisk® Framework. 
 
 A CELEPAR, empresa de tecnologia do Estado do Paraná, desenvolveu o Asterisco Paraná, o mesmo ficou na versão 2.0. O projeto foi descontinuado em 14 de julho de 2008.
 
