@@ -36,13 +36,13 @@ http://www.asteriscoparana.pr.gov.br/modules/conteudo/conteudo.php?conteudo=6
 
 O sistema *PARANÁ integra as redes de dados e de telefonia, gerando chamadas telefônicas entre os órgãos integrantes da Rede de Governo (chamadas intra-rede), utiliza a infraestrutura de dados existente, evitando a tarifação das mesmas. Além destes aspectos técnico-econômicos, existem outros serviços agregados que podem ser integrados.
 
-### OBJETIVO 
+### Objetivo 
 Viabilizar recursos avançados de PABX de última geração e gestão detalhada dos serviços de telecomunicações.
 
-### PLATAFORMA TECNOLÓGICA
+### Plataforma Tecnológica
 Código-aberto Asterisk® da Digium™, Debian, Banco de dados PostgreSQL
 
-### FUNCIONALIDADES
+### Funcionalidades
 Audioconferência
 Correio de voz
 Sistema de bilhetagem e tarifação
@@ -53,7 +53,7 @@ Sistema de call center
 Unidade de Resposta Audível – URA
 Integração com o correio eletrônico 
 
-### VANTAGENS
+### Vantagens
 Redução dos custos de comunicação
 Mobilidade
 Otimização das infraestruturas de telecomunicações
